@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="AppDebitiV2.Views.UC.Movment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppDebitiV2.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="400"
+             Background="White">
+    <Grid>
+
+        <Label Content="000€" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30"/>
+        <Separator Margin="-100,0,100,0">
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
+        <Label Content="PlaceHolder" HorizontalAlignment="Center"  FontFamily="trebuchet ms" FontSize="30" Foreground="Black" VerticalAlignment="Center" Margin="142,1,89,-1"/>
+
+    </Grid>
+</UserControl>

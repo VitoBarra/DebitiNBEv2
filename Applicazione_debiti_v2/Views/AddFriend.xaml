@@ -1,0 +1,31 @@
+﻿<Window x:Class="AppDebitiV2.Views.AddFriend"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDebitiV2.Views"
+        mc:Ignorable="d"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AddFriend" Height="200" Width="300"  Style="{StaticResource WindowBase}">
+    <Grid>
+
+
+        <Border Style="{StaticResource MyBorder}" Width="250" Height="140" >
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="#ccdaf0" ShadowDepth="3"/>
+            </Border.Effect>
+
+
+            <Grid Margin="10">
+
+
+                <TextBox x:Name="ID" md:HintAssist.Hint="ID" Margin="10,20,10,0"  FontWeight="Bold" Style="{StaticResource MyTextBox}" VerticalAlignment="Top" />
+                <Button Style="{StaticResource MyMaterialButton}" Width="100" Height="30" Content="ADD" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,5,5"/>
+            </Grid>
+            
+            
+        </Border>
+        
+    </Grid>
+</Window>

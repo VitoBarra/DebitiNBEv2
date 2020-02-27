@@ -1,0 +1,91 @@
+﻿<Window x:Class="AppDebitiV2.Views.Richieste"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDebitiV2.Views"
+        mc:Ignorable="d"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:UC="clr-namespace:AppDebitiV2.Views.UC"
+        Title="Richieste" Height="830" Width="910" Style="{StaticResource WindowBase}">
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Height="400" >
+
+
+
+            <Grid HorizontalAlignment="Left" Width="450">
+            <Border Background="White" Margin="15" Style="{StaticResource MyBorder}" >
+                
+                    <ScrollViewer>
+                        <StackPanel>
+                            
+                            <Label Content="Credito" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                            <UC:Request Width="400" Margin="5,0"/>
+                            <UC:Request Width="400" Margin="5,0"/>
+
+
+                        </StackPanel>
+                    </ScrollViewer>
+                
+                </Border>
+        </Grid>
+
+
+            <Grid HorizontalAlignment="Right" Width="450">
+                <Border Background="White" Margin="15" Style="{StaticResource MyBorder}" >
+                    
+                     <ScrollViewer>
+                        <StackPanel>
+                            
+                            <Label Content="Debito" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                            <UC:Request Width="400" Margin="5,0"/>
+                            <UC:Request Width="400" Margin="5,0"/>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                </Border>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="400" >
+            
+            <Grid HorizontalAlignment="Left" Width="450">
+                <Border Background="White" Margin="15" Style="{StaticResource MyBorder}" >
+                    
+                    <ScrollViewer>
+                         <StackPanel>
+                            <Label Content="Saldo" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                            <UC:Request Width="400" Margin="5,0"/>
+                            <UC:Request Width="400" Margin="5,0"/>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                </Border>
+            </Grid>
+
+
+            <Grid HorizontalAlignment="Right" Width="450">
+                <Border Background="White" Margin="15" Style="{StaticResource MyBorder}" >
+                    
+                    <ScrollViewer >
+                        <StackPanel >
+                            <Label Content="Amici" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                            <UC:Request Width="400" Margin="5,0"/>
+                            <UC:Request Width="400" Margin="5,0"/>
+
+                        </StackPanel>
+                   </ScrollViewer>
+                    
+                </Border>
+            </Grid>
+        </StackPanel>
+
+
+    </StackPanel>
+</Window>
