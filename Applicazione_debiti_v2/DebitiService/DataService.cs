@@ -10,11 +10,19 @@ namespace debitiNBEService
 
     public class UserData
     {
+        [JsonProperty("ID")]
+        public int ID { get; set; } = -1;
+
         [JsonProperty("username")]
         public string UserName { get; set; } = "not legged";
 
-        [JsonProperty("ID_user")]
-        public int ID_User { get; set; } = -1;
+        [JsonProperty("Name")]
+        public string Name { get; set; }
+
+        [JsonProperty("lastname")]
+        public string Lastname { get; set; }
+
+
     }
 
 
@@ -31,5 +39,11 @@ namespace debitiNBEService
         [JsonProperty("ID_SaldoRequest")]
         public int ID_SaldoRequest { get; set; }
     }
+
+
+
+    enum FriendRequest { active, accepted, ignored, blocked }
+    enum Reques { active, accepted, dennied }
+
 
 }

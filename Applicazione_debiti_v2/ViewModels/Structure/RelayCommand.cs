@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,21 +24,11 @@ namespace AppDebitiV2.ViewModels
 
 
 
-        public bool CanExecute(object parameter)
-        {
-            return (CanExecuteChanfed == null) ? true : CanExecuteChanfed.Invoke(parameter);
-        }
+        public bool CanExecute(object parameter) => (CanExecuteChanfed == null) ? true : CanExecuteChanfed.Invoke(parameter);
 
+        public void Execute(object parameter) => executeMethod?.Invoke(parameter);
 
-        public void Execute(object parameter)
-        {
-            executeMethod?.Invoke(parameter);
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        }
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 
 
 

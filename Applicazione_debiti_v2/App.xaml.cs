@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using AppDebitiV2.Views;
+using debitiNBEService;
 
 namespace AppDebitiV2
 {
@@ -17,10 +18,10 @@ namespace AppDebitiV2
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            this.MainWindow = new MainWindowView() ;
-            this.MainWindow.DataContext = new ViewModels.ViewModelMainWindow(new UserData("-1", "asd"));
+            HttpEmulator.DatabaseConnection();
+            this.MainWindow = new MainWindowView(new ViewModels.ViewModelMainWindow());
             this.MainWindow.Show();
+        
         }
     }
 }

@@ -9,12 +9,12 @@
         xmlns:VM="clr-namespace:AppDebitiV2.ViewModels"
         xmlns:UC="clr-namespace:AppDebitiV2.Views.UC"
         xmlns:ST="clr-namespace:AppDebitiV2.ViewModel.Structure"
-        
         Title="{Binding Path=Title}"
-        Height="600" Width="560" Style="{StaticResource WindowBase}" >
+        Height="600" Width="560" Style="{StaticResource WindowBase}" 
+        d:DataContext="{d:DesignInstance VM:ViewModelMainWindow,IsDesignTimeCreatable=True}">
       
-        <!--d:DataContext="{d:DesignInstance VM:ViewModelMainWindow,IsDesignTimeCreatable=True}"-->
-
+ 
+    
     <Window.Resources>
 
         <Storyboard x:Key="OpenMenu">
@@ -100,7 +100,7 @@
             </Grid.RowDefinitions>
 
             <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" 
-                     x:Name="ButtonOpenMenu" HorizontalAlignment="Left" Margin="10,0,0,0" Click="ButtonOpenMenu_Click" Visibility="{Binding Path=MenuVisibility, Converter={StaticResource  BoolToVisibility}}" />
+                     x:Name="ButtonOpenMenu" HorizontalAlignment="Left" Margin="10,0,0,0" Click="ButtonOpenMenu_Click"/> <!--Visibility="{Binding Path=MenuVisibility, Converter={StaticResource  BoolToVisibility}}"--> 
             <md:PackIcon Kind="Menu" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="45" Width="45"/>
 
 

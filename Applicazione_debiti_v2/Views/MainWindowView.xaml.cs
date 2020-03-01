@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AppDebitiV2.Views;
+using AppDebitiV2.ViewModels;
 
 namespace AppDebitiV2.Views
 {
@@ -21,24 +22,19 @@ namespace AppDebitiV2.Views
     /// </summary>
     public partial class MainWindowView : Window
     {
-        ViewModels.ViewModelMainWindow vm;
+        ViewModelMainWindow vm;
 
 
-        public MainWindowView( )
+        public MainWindowView(ViewModelMainWindow _vm )
         {
             InitializeComponent();
+            vm = _vm;
+            this.DataContext = vm;
+            LoginView lf = new LoginView(new ViewModelLoginForm());
 
 
-
-            //this.Hide();
-            //LoginForm login = new LoginForm();
-            //login.ShowDialog();
-            //this.Show();
-
-            GetViewModel();
+            lf.ShowDialog();
         }
-
-        public void GetViewModel() => vm = (ViewModels.ViewModelMainWindow)DataContext;
 
         private void AddRequest(object sender, RoutedEventArgs e)
         {

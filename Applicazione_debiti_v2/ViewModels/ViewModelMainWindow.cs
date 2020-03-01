@@ -32,14 +32,14 @@ namespace AppDebitiV2.ViewModels
         public ViewModelMainWindow() : this(new UserData("null","-1"))
         {
             if (IsDesignMode)
-                Title = "design mode one";
+                Title = "design mode";
             else
                 Title = "non design";
         }
         public ViewModelMainWindow(IUserData userData) 
         {
             this.userData = userData;
-            //this.relay = new RelayCommand((param)=>return null);
+           
         }
 
 
