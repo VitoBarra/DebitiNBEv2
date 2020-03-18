@@ -1,11 +1,13 @@
-﻿     <Application x:Class="AppDebitiV2.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AppDebitiV2"
-             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:UC="clr-namespace:AppDebitiV2.Views.UC">
-        
-        
+﻿
+<Application
+    x:Class="AppDebitiV2.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UC="clr-namespace:AppDebitiV2.Views.UC"
+    xmlns:local="clr-namespace:AppDebitiV2"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+
     <Application.Resources>
 
 
@@ -17,37 +19,37 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-           
 
 
 
-            <Style TargetType="{x:Type Window}" x:Key ="WindowBase" >
-                <Setter Property="WindowStyle"  Value="SingleBorderWindow"/>
-                <Setter Property="Background" Value="#081014"/>
-                <Setter  Property="ResizeMode"  Value="NoResize"/>
+
+            <Style x:Key="WindowBase" TargetType="{x:Type Window}">
+                <Setter Property="WindowStyle" Value="SingleBorderWindow" />
+                <Setter Property="Background" Value="#081014" />
+                <Setter Property="ResizeMode" Value="NoResize" />
             </Style>
 
-            <Style TargetType="{x:Type Label}" x:Key="Label">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Background" Value="#335566"/>
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="VerticalAlignment" Value="Center"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Style x:Key="Label" TargetType="{x:Type Label}">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Background" Value="#335566" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
 
                 <Style.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="12" />
-                      </Style>
+                    </Style>
                 </Style.Resources>
 
             </Style>
 
 
-            <Style TargetType="{x:Type TextBox}" x:Key="InputField">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Style x:Key="InputField" TargetType="{x:Type TextBox}">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
 
 
                 <Style.Resources>
@@ -59,29 +61,38 @@
             </Style>
 
 
-            <Style TargetType="{x:Type Button}" x:Key="MyMaterialButton" BasedOn="{StaticResource {x:Type Button}}">
-                <Setter Property="Background" Value="#93b6ed"/>
-                <Setter Property="BorderBrush" Value="AliceBlue"/>
+            <Style
+                x:Key="MyMaterialButton"
+                BasedOn="{StaticResource {x:Type Button}}"
+                TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="#93b6ed" />
+                <Setter Property="BorderBrush" Value="AliceBlue" />
             </Style>
 
 
-            <Style TargetType="{x:Type PasswordBox}" x:Key="MyPasswordBox" BasedOn="{StaticResource  MaterialDesignFloatingHintPasswordBox}">
-                <Setter Property="md:HintAssist.Foreground" Value="#93b6ed"/>
+            <Style
+                x:Key="MyPasswordBox"
+                BasedOn="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                TargetType="{x:Type PasswordBox}">
+                <Setter Property="md:HintAssist.Foreground" Value="#93b6ed" />
             </Style>
 
 
-            <Style TargetType="{x:Type TextBox}" x:Key="MyTextBox" BasedOn="{StaticResource  MaterialDesignFloatingHintTextBox}">
-                <Setter Property="md:HintAssist.Foreground" Value="#93b6ed"/>
+            <Style
+                x:Key="MyTextBox"
+                BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}"
+                TargetType="{x:Type TextBox}">
+                <Setter Property="md:HintAssist.Foreground" Value="#93b6ed" />
             </Style>
 
-            <Style TargetType="{x:Type Border}" x:Key="MyBorder">
-                <Setter Property="CornerRadius" Value="20"/>
+            <Style x:Key="MyBorder" TargetType="{x:Type Border}">
+                <Setter Property="CornerRadius" Value="20" />
                 <Setter Property="Background" Value="White" />
             </Style>
 
-            <Style TargetType="{x:Type UC:UserBox}" x:Key="UserBoxBorder">
-                <Setter Property="BorderBrush" Value="Azure"/>
-                <Setter Property="BorderThickness" Value="2"/>
+            <Style x:Key="UserBoxBorder" TargetType="{x:Type UC:UserBox}">
+                <Setter Property="BorderBrush" Value="Azure" />
+                <Setter Property="BorderThickness" Value="2" />
             </Style>
 
         </ResourceDictionary>

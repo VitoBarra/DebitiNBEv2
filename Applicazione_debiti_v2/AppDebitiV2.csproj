@@ -139,8 +139,8 @@
     <Compile Include="DebitiService\MySqlTool.cs" />
     <Compile Include="ViewModels\Structure\ConverterTool.cs" />
     <Compile Include="ViewModels\Structure\RelayCommand.cs" />
-    <Compile Include="ViewModels\ViewModelLoginForm.cs" />
-    <Compile Include="ViewModels\ViewModelMainWindow.cs" />
+    <Compile Include="ViewModels\ViewModelLogin.cs" />
+    <Compile Include="ViewModels\ViewModelMain.cs" />
     <Compile Include="Views\AddFriend.xaml.cs">
       <DependentUpon>AddFriend.xaml</DependentUpon>
     </Compile>

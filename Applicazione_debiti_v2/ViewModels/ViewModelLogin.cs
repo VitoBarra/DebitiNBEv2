@@ -13,27 +13,22 @@ using Newtonsoft.Json;
 
 namespace AppDebitiV2.ViewModels
 {
-    public class ViewModelLoginForm: BaseViewModel
+    public class ViewModelLogin : BaseViewModel
     {
-        public RelayCommand LoginCommand { get; private set; }
-        public RelayCommand SingUpCommand { get; private set; }
-        public RelayCommand ForgottenPasswordCommand { get; private set; }
-        public RelayCommand CloseWind { get; private set; }
-
-
-        private string  _username;
-        public string Username 
+        #region BindingProp
+        private string _username;
+        public string Username
         {
-            get 
+            get
             {
                 return _username;
             }
-            set 
+            set
             {
                 _username = value;
                 Notify();
                 LoginCommand.RaiseCanExecuteChanged();
-            } 
+            }
         }
 
         private string _password;
@@ -47,11 +42,36 @@ namespace AppDebitiV2.ViewModels
                 LoginCommand.RaiseCanExecuteChanged();
             }
         }
+        #endregion
 
-        public ViewModelLoginForm()
+
+        public  string UserDataStr = null;
+
+        #region BindingComand
+        public RelayCommand LoginCommand { get; private set; }
+        public RelayCommand SingUpCommand { get; private set; }
+        public RelayCommand ForgottenPasswordCommand { get; private set; }
+        public RelayCommand CloseWind { get; private set; }
+        #endregion
+
+
+
+        public ViewModelLogin()
         {
             LoginCommand = new RelayCommand(
-                          action: para => { Global.UserData = JsonConvert.DeserializeObject<UserData>(HttpEmulator.GetLoginUser(Username, Password)); Password = null; (para as Window).Close(); },
+                          action: para =>
+                          {
+                              UserDataStr = HttpEmulator.GetLoginUser(Username, Password);
+                              if (UserDataStr != null)
+                              {
+                                  Password = null;
+                                  Global.loggedState = true;
+                                  (para as Window).Close();
+                              }
+                              else
+                                  MessageBox.Show("nome utente e/o password errate","ERRORE");
+
+                          },
                           predicate: para => { return !(string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password)); });
 
 

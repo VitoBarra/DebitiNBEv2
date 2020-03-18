@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using debitiNBEService;
 using Newtonsoft.Json;
+using AppDebitiV2.ViewModels;
 
 namespace AppDebitiV2
 {
@@ -17,19 +18,19 @@ namespace AppDebitiV2
         int ID_User { get; set; }
     }
 
-    public class UserData : IUserData
+    public class UserDataViewModels : BaseViewModel , IUserData
     {
-        string IUserData.UserName { get; set; }
-        int IUserData.ID_User { get; set; }
+        private string _Username;
+        [JsonProperty("username")]
+        string IUserData.UserName { get =>_Username; set { _Username = value;Notify(); } }
+        private int _ID;
+        [JsonProperty("ID_user")]
+        int IUserData.ID_User { get => _ID; set { _ID = value; Notify(); } }
 
        public IList<IRequestData> AcceptedCrediti ;
        public IList<IRequestData> AcceptedDebiti;
 
 
-        public UserData(string UserName, string Password)
-        {
-           // JsonConvert.DeserializeObject<UserData>(HttpEmulator.GetUserData(UserName, Password));
-        }
     }
 
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
 
-namespace AppDebitiV2.ViewModel.Structure
+namespace AppDebitiV2.ViewModels
 {
    
         public class BoolToVisibility : IValueConverter

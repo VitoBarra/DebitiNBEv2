@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppDebitiV2.ViewModels;
+using Newtonsoft.Json;
 
 namespace AppDebitiV2.Views
 {
@@ -22,18 +23,19 @@ namespace AppDebitiV2.Views
     /// </summary>
     public partial class MainWindowView : Window
     {
-        ViewModelMainWindow vm;
+        ViewModelMain vm;
 
 
-        public MainWindowView(ViewModelMainWindow _vm )
+        public MainWindowView(ViewModelMain _vm )
         {
             InitializeComponent();
             vm = _vm;
             this.DataContext = vm;
-            LoginView lf = new LoginView(new ViewModelLoginForm());
-
-
-            lf.ShowDialog();
+            LoginView loginView= new LoginView(new ViewModelLogin());
+            if(loginView.ShowDialog() != true)
+            {
+                vm.LoggedUserdata = JsonConvert.DeserializeObject<UserDataViewModels>((loginView.DataContext as ViewModelLogin).UserDataStr);
+            }
         }
 
         private void AddRequest(object sender, RoutedEventArgs e)
@@ -66,15 +68,6 @@ namespace AppDebitiV2.Views
 
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
-        {
-            vm.MenuVisibility = true;
-        }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-            vm.MenuVisibility = false;
-        }
 
         private void ListViewItem_AddFriend(object sender, MouseButtonEventArgs e)
         {

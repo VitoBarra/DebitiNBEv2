@@ -21,9 +21,9 @@ namespace AppDebitiV2
     /// </summary>
     public partial class LoginView : Window
     {
-        ViewModelLoginForm vm;
+        ViewModelLogin vm;
 
-        public LoginView(ViewModelLoginForm _vm)
+        public LoginView(ViewModelLogin _vm)
         {
             InitializeComponent();
             this.DataContext = _vm;

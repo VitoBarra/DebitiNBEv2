@@ -1,27 +1,30 @@
-﻿<Window x:Class="AppDebitiV2.Views.MainWindowView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppDebitiV2.Views"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"    
-        mc:Ignorable="d"
-        xmlns:VM="clr-namespace:AppDebitiV2.ViewModels"
-        xmlns:UC="clr-namespace:AppDebitiV2.Views.UC"
-        xmlns:ST="clr-namespace:AppDebitiV2.ViewModel.Structure"
-        Title="{Binding Path=Title}"
-        Height="600" Width="560" Style="{StaticResource WindowBase}" 
-        d:DataContext="{d:DesignInstance VM:ViewModelMainWindow,IsDesignTimeCreatable=True}">
-      
- 
-    
+﻿<Window
+    x:Class="AppDebitiV2.Views.MainWindowView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:UC="clr-namespace:AppDebitiV2.Views.UC"
+    xmlns:VM="clr-namespace:AppDebitiV2.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AppDebitiV2.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Title="{Binding Path=Title}"
+    Width="560"
+    Height="600"
+    d:DataContext="{d:DesignInstance VM:ViewModelMain,
+                                     IsDesignTimeCreatable=True}"
+    Style="{StaticResource WindowBase}"
+    mc:Ignorable="d">
+
+
+
     <Window.Resources>
 
         <Storyboard x:Key="OpenMenu">
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="160"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="160" />
             </DoubleAnimationUsingKeyFrames>
 
         </Storyboard>
@@ -29,58 +32,110 @@
         <Storyboard x:Key="CloseMenu">
 
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="160"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="GridMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="160" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60" />
             </DoubleAnimationUsingKeyFrames>
 
         </Storyboard>
 
 
-        <ST:BoolToVisibility x:Key="BoolToVisibility"/>
+        <VM:BoolToVisibility x:Key="BoolToVisibility" />
 
 
     </Window.Resources>
 
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
-            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
         </EventTrigger>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
-            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}" />
         </EventTrigger>
     </Window.Triggers>
 
 
 
-        <Grid>
-        <!--credito/debito-->
-        <Grid HorizontalAlignment="Right" Width="475">
-            <StackPanel  >
-                <StackPanel Height="120" VerticalAlignment="Top" Orientation="Horizontal" >
+    <Grid>
+        <!--  credito/debito  -->
+        <Grid Width="475" HorizontalAlignment="Right">
+            <StackPanel>
+                <StackPanel
+                    Height="120"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
 
-                    <!--credito-->
-                    <Border Background="White" Width="200" Margin="20,10,0,10" Style="{StaticResource MyBorder}">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Visibility="Visible">
-                                <Label Content="000€" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" FontSize="30"/>
-                            </Button>
+                    <!--  credito  -->
+                    <Border
+                        Width="200"
+                        Margin="20,10,0,10"
+                        Background="White"
+                        Style="{StaticResource MyBorder}">
+                        <Button
+                            Height="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Visibility="Visible">
+                            <StackPanel Orientation="Horizontal">
+                                <Label
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Path=CreditValue}"
+                                    FontSize="30"
+                                    Foreground="Green" />
+                                <Label
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="€"
+                                    FontSize="30"
+                                    Foreground="Green" />
+
+                            </StackPanel>
+                        </Button>
                     </Border>
-                    <!--credito-->
-                    
-                    <!--debito-->
-                    <Border Background="White" Width="200"  Margin="20,10,0,10" Style="{StaticResource MyBorder}">
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60">
-                                <Label Content="000€" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="red" FontSize="30"/>
-                            </Button>
+                    <!--  credito  -->
+
+                    <!--  debito  -->
+                    <Border
+                        Width="200"
+                        Margin="20,10,0,10"
+                        Background="White"
+                        Style="{StaticResource MyBorder}">
+                        <Button
+                            Height="60"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource MaterialDesignFlatButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <Label
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="{Binding Path=DebitValue}"
+                                    FontSize="30"
+                                    Foreground="red" />
+                                <Label
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Content="€"
+                                    FontSize="30"
+                                    Foreground="red" />
+                            </StackPanel>
+                        </Button>
                     </Border>
-                    <!--debito-->
-                    
+                    <!--  debito  -->
+
                 </StackPanel>
 
-                <Border Background="White" Height="420" Width="460" Margin="0,0,10,0" Style="{StaticResource MyBorder}">
+                <Border
+                    Width="460"
+                    Height="420"
+                    Margin="0,0,10,0"
+                    Background="White"
+                    Style="{StaticResource MyBorder}">
                     <ScrollViewer Margin="10,10,10,10">
                         <StackPanel>
-                            <UC:Movment/>
+                            <UC:Movment />
 
                         </StackPanel>
                     </ScrollViewer>
@@ -91,46 +146,106 @@
 
 
 
-        <Grid   Background="Gray" HorizontalAlignment="Left" Width="60" x:Name="GridMenu">
+        <Grid
+            x:Name="GridMenu"
+            Width="60"
+            HorizontalAlignment="Left"
+            Background="Gray">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" 
-                     x:Name="ButtonOpenMenu" HorizontalAlignment="Left" Margin="10,0,0,0" Click="ButtonOpenMenu_Click"/> <!--Visibility="{Binding Path=MenuVisibility, Converter={StaticResource  BoolToVisibility}}"--> 
-            <md:PackIcon Kind="Menu" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="45" Width="45"/>
-
-
-                <Button  HorizontalAlignment="Right" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  x:Name="ButtonCloseMenu" Margin="10,0,0,10" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
-                <md:PackIcon Kind="ArrowBack" Height="40" Width="40" Foreground="AliceBlue"/>
+            <Button
+                x:Name="ButtonOpenMenu"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}"
+                Command="{Binding Path=OpenMenu}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                Visibility="{Binding Path=ButtonMenuVisibility, Converter={StaticResource BoolToVisibility}}">
+                <md:PackIcon
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Width="45"
+                    Height="45"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    Kind="Menu" />
             </Button>
 
 
-            <UC:UserBox  Grid.Row="1" />
+            <Button
+                x:Name="ButtonCloseMenu"
+                Grid.Row="0"
+                Margin="10,0,0,10"
+                HorizontalAlignment="Right"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}"
+                Command="{Binding Path=OpenMenu}"
+                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                Visibility="{Binding Path=ButtonArrowVisibility, Converter={StaticResource BoolToVisibility}}">
+                <md:PackIcon
+                    Width="40"
+                    Height="40"
+                    Foreground="AliceBlue"
+                    Kind="ArrowBack" />
+            </Button>
 
-            <ListView  Grid.Column="0" Grid.Row="2"  Foreground="AliceBlue" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+            <UC:UserBox
+                x:Name="LoggedUser"
+                Grid.Row="1"
+                DataContext="{Binding Path=LoggedUserdata}"
+                ID="{Binding Path=ID_User}"
+                username="{Binding Path=UserName}" />
+
+            <ListView
+                Grid.Row="2"
+                Grid.Column="0"
+                Foreground="AliceBlue"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                 <ListViewItem PreviewMouseLeftButtonUp="ListViewItem_AddFriend">
                     <StackPanel Orientation="Horizontal">
-                        <md:PackIcon Kind="Plus" Height="45" Width="45" />
-                        <TextBlock Text="Agg. amico" VerticalAlignment="Center" Margin="10" />
+                        <md:PackIcon
+                            Width="45"
+                            Height="45"
+                            Kind="Plus" />
+                        <TextBlock
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            Text="Agg. amico" />
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem PreviewMouseLeftButtonUp="ListViewItem_LookRequest">
                     <StackPanel Orientation="Horizontal">
-                        <md:PackIcon Kind="MoneyUsd" Height="45" Width="45" />
-                        <TextBlock Text="Richiste" VerticalAlignment="Center" Margin="10"/>
+                        <md:PackIcon
+                            Width="45"
+                            Height="45"
+                            Kind="MoneyUsd" />
+                        <TextBlock
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            Text="Richiste" />
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem PreviewMouseLeftButtonUp="ListViewItem_AddRequest">
                     <StackPanel Orientation="Horizontal">
-                        <md:PackIcon Kind="Money" Height="45" Width="45" />
-                        <TextBlock Text="fai una richiesta" VerticalAlignment="Center" Margin="10" />
+                        <md:PackIcon
+                            Width="45"
+                            Height="45"
+                            Kind="Money" />
+                        <TextBlock
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            Text="fai una richiesta" />
                     </StackPanel>
                 </ListViewItem>
 
@@ -138,8 +253,14 @@
 
                 <ListViewItem PreviewMouseLeftButtonUp="ListViewItem_Paga">
                     <StackPanel Orientation="Horizontal">
-                        <md:PackIcon Kind="Payment" Height="45" Width="45" />
-                        <TextBlock Text="paga" VerticalAlignment="Center" Margin="10"/>
+                        <md:PackIcon
+                            Width="45"
+                            Height="45"
+                            Kind="Payment" />
+                        <TextBlock
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            Text="paga" />
                     </StackPanel>
                 </ListViewItem>
 

@@ -10,7 +10,6 @@ namespace AppDebitiV2
 {
     static class Global
     {
-        public static IUserData UserData { get; set; } = new UserData ( "90" ,"asda");
         public static bool loggedState = false;
     }
 }

@@ -19,9 +19,14 @@ namespace AppDebitiV2
         {
             base.OnStartup(e);
             HttpEmulator.DatabaseConnection();
-            this.MainWindow = new MainWindowView(new ViewModels.ViewModelMainWindow());
-            this.MainWindow.Show();
-        
+
+            MainWindow = new MainWindowView(new ViewModels.ViewModelMain());
+
+            if (Global.loggedState)
+                MainWindow.Show();
+            else
+                MainWindow.Close();
+
         }
     }
 }

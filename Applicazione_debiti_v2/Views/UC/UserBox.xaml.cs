@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppDebitiV2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,33 @@ namespace AppDebitiV2.Views.UC
     /// </summary>
     public partial class UserBox : UserControl
     {
+        #region DependecyProperty
+
+        public static readonly DependencyProperty usernameProperty =
+            DependencyProperty.Register("username", typeof(string), typeof(UserBox), new PropertyMetadata("PlaceHolder"));
+        public string username
+        {
+            get { return (string)GetValue(usernameProperty); }
+            set { SetValue(usernameProperty, value); }
+        }
+
+
+        public string ID
+        {
+            get { return (string)GetValue(IDProperty); }
+            set { SetValue(IDProperty, value); }
+        }
+
+        public static readonly DependencyProperty IDProperty =
+            DependencyProperty.Register("ID", typeof(string), typeof(UserBox), new PropertyMetadata("Plahol"));
+
+
+
+        #endregion
+
+
+
+
         public UserBox()
         {
             InitializeComponent();
