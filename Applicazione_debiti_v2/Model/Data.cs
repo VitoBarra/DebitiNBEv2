@@ -6,50 +6,64 @@ using System.Threading.Tasks;
 using debitiNBEService;
 using Newtonsoft.Json;
 using AppDebitiV2.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace AppDebitiV2
 {
-    public interface IUserData
+    public class UserData
     {
-        [JsonProperty("username")]
-        string UserName { get; set; }
-
-        [JsonProperty("ID_user")]
-        int ID_User { get; set; }
+        public int _ID;
+        public string _Email;
+        public string _Username;
+        public string _Name;
+        public string _Lastname;
     }
 
-    public class UserDataViewModels : BaseViewModel , IUserData
+    public class UserDataViewModels : BaseViewModel
     {
-        private string _Username;
-        [JsonProperty("username")]
-        string IUserData.UserName { get =>_Username; set { _Username = value;Notify(); } }
-        private int _ID;
-        [JsonProperty("ID_user")]
-        int IUserData.ID_User { get => _ID; set { _ID = value; Notify(); } }
 
-       public IList<IRequestData> AcceptedCrediti ;
-       public IList<IRequestData> AcceptedDebiti;
+        UserData userData = new UserData();
+
+        [JsonProperty("ID")]
+        public int ID { get => userData._ID; set { userData._ID = value; Notify(); } }
+
+        [JsonProperty("Email")]
+        public string Email { get => userData._Email; set { userData._Email = value; Notify(); } }
+
+        [JsonProperty("username")]
+        public string UserName { get => userData._Username; set { userData._Username = value; Notify(); } }
+
+
+        [JsonProperty("Name")]
+        public string _Name { get => userData._Name; set { userData._Name = value; Notify(); } }
+
+        [JsonProperty("Lastname")]
+        public string _Lastname { get => userData._Lastname; set { userData._Lastname = value; Notify(); } }
+
+
+
+        private IList<RequestData> _Request;
+        public IList<RequestData> Request { get => _Request; set { _Request = new ObservableCollection<RequestData>(value); Notify(); } }
+
+
 
 
     }
 
 
-    public interface IRequestData
+    public class RequestData
     {
-        [JsonProperty("ID_Request")]
-        int ID_Request { get; set; }
-        [JsonProperty("ID_Mandante")]
-        int ID_Mandante { get; set; }
-        [JsonProperty("User")]
-        string User { get; set; }
-        [JsonProperty("Importo")]
-        float Importo { get; set; }
+        [JsonProperty("ID_mandante")]
+        int ID_mandante { get; set; }
 
-        [JsonProperty("ID_SaldoRequest")]
-        int ID_SaldoRequest { get; set; }
-        [JsonProperty("CreditoRichistaSaldo")]
-        float CreditoRichistaSaldo { get; set; }
+        [JsonProperty("ID_ricevente")]
+        int ID_ricevente { get; set; }
 
+        [JsonProperty("Credito")]
+        float Credito { get; set; }
+
+        [JsonProperty("Stato")]
+        int Stato { get; set; }
     }
 
 }

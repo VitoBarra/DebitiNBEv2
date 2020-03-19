@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppDebitiV2.ViewModels;
+using debitiNBEService;
 using Newtonsoft.Json;
 
 namespace AppDebitiV2.Views
@@ -35,6 +36,7 @@ namespace AppDebitiV2.Views
             if(loginView.ShowDialog() != true)
             {
                 vm.LoggedUserdata = JsonConvert.DeserializeObject<UserDataViewModels>((loginView.DataContext as ViewModelLogin).UserDataStr);
+                vm.LoggedUserdata.Request = JsonConvert.DeserializeObject<RequestData[]>(HttpEmulator.GetReqeust( vm.LoggedUserdata.ID));
             }
         }
 

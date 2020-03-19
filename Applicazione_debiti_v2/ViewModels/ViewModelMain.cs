@@ -14,7 +14,7 @@ namespace AppDebitiV2.ViewModels
 
         private UserDataViewModels _LoggedUserdata;
 
-        public IUserData LoggedUserdata
+        public UserDataViewModels LoggedUserdata
         {
             get => _LoggedUserdata;
             set

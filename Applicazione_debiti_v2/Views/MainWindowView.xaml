@@ -200,9 +200,8 @@
             <UC:UserBox
                 x:Name="LoggedUser"
                 Grid.Row="1"
-                DataContext="{Binding Path=LoggedUserdata}"
-                ID="{Binding Path=ID_User}"
-                username="{Binding Path=UserName}" />
+                ID="{Binding Path=LoggedUserdata.ID}"
+                username="{Binding Path=LoggedUserdata.UserName}" />
 
             <ListView
                 Grid.Row="2"

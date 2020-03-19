@@ -10,40 +10,46 @@ namespace debitiNBEService
 
     public class UserData
     {
+
         [JsonProperty("ID")]
-        public int ID { get; set; } = -1;
+        public int ID { get; set; }
+
+        [JsonProperty("Email")]
+        public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string UserName { get; set; } = "not legged";
+        public string Username { get; set; }
 
         [JsonProperty("Name")]
         public string Name { get; set; }
 
-        [JsonProperty("lastname")]
+        [JsonProperty("Lastname")]
         public string Lastname { get; set; }
-
 
     }
 
 
     public class RequestData
     {
-        [JsonProperty("ID_Request")]
-        public int ID_Request { get; set; }
-        [JsonProperty("ID_Mandante")]
-        public int ID_Mandante { get; set; }
-        [JsonProperty("User")]
-        public string User { get; set; }
-        [JsonProperty("Importo")]
-        public double Importo { get; set; }
-        [JsonProperty("ID_SaldoRequest")]
-        public int ID_SaldoRequest { get; set; }
+        public enum State {active, accepted, dennied }
+
+        [JsonProperty("ID_mandante")]
+        public int ID_mandante { get; set; }
+
+        [JsonProperty("ID_ricevente")]
+        public int ID_ricevente { get; set; }
+
+        [JsonProperty("Credito")]
+        public double Credito { get; set; }
+
+        [JsonProperty("Stato")]
+        public State Stato { get; set; }
     }
 
 
 
     enum FriendRequest { active, accepted, ignored, blocked }
-    enum Reques { active, accepted, dennied }
+ 
 
 
 }

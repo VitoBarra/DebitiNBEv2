@@ -18,9 +18,11 @@ namespace AppDebitiV2
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            HttpEmulator.DatabaseConnection();
 
+            HttpEmulator.DatabaseConnection();
             MainWindow = new MainWindowView(new ViewModels.ViewModelMain());
+
+
 
             if (Global.loggedState)
                 MainWindow.Show();
