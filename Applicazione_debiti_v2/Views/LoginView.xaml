@@ -1,15 +1,20 @@
-﻿<Window x:Class="AppDebitiV2.LoginView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AppDebitiV2"
-        xmlns:VM="clr-namespace:AppDebitiV2.ViewModels"
-        mc:Ignorable="d"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        x:Name="LoginWindow"
-        Title="Login" Height="300" Width="400" Style="{StaticResource WindowBase}"
-        d:DataContext="{d:DesignInstance VM:ViewModelLoginForm ,IsDesignTimeCreatable=False}">
+﻿<Window
+    x:Class="AppDebitiV2.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:VM="clr-namespace:AppDebitiV2.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AppDebitiV2"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    x:Name="LoginWindow"
+    Title="Login"
+    Width="400"
+    Height="300"
+    d:DataContext="{d:DesignInstance VM:ViewModelLogin,
+                                     IsDesignTimeCreatable=False}"
+    Style="{StaticResource WindowBase}"
+    mc:Ignorable="d">
 
     <!--<Window.DataContext>
         <VM:ViewModelLoginForm/>
@@ -19,25 +24,56 @@
 
 
 
-        <Border Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="350" Height="200" Style="{StaticResource MyBorder}">
+        <Border
+            Width="350"
+            Height="200"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="White"
+            Style="{StaticResource MyBorder}">
 
 
             <Border.Effect>
-                <DropShadowEffect BlurRadius="30" Color="#ccdaf0" ShadowDepth="3"/>
+                <DropShadowEffect
+                    BlurRadius="30"
+                    ShadowDepth="3"
+                    Color="#ccdaf0" />
             </Border.Effect>
 
             <StackPanel Margin="5">
 
-                <TextBox  md:HintAssist.Hint="Username" Margin="10,20,10,0"  FontWeight="Bold" Style="{StaticResource MyTextBox}" Text="{Binding Path=Username, Mode=OneWayToSource}"/>
-                <PasswordBox x:Name="PasswordInput" md:HintAssist.Hint="Password"  Margin="10,20,10,0"  FontWeight="Bold" Style="{StaticResource MyPasswordBox}" PasswordChanged="PasswordInput_PasswordChanged"  />
+                <TextBox
+                    Margin="10,20,10,0"
+                    md:HintAssist.Hint="Username"
+                    FontWeight="Bold"
+                    Style="{StaticResource MyTextBox}"
+                    Text="{Binding Path=Username, Mode=OneWayToSource}" />
+                <PasswordBox
+                    x:Name="PasswordInput"
+                    Margin="10,20,10,0"
+                    md:HintAssist.Hint="Password"
+                    FontWeight="Bold"
+                    PasswordChanged="PasswordInput_PasswordChanged"
+                    Style="{StaticResource MyPasswordBox}" />
 
-                <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0"><Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate" >hai dimenticato le tue credenziali?</Hyperlink></TextBlock>
+                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"><Hyperlink NavigateUri="http://www.google.com" RequestNavigate="Hyperlink_RequestNavigate">hai dimenticato le tue credenziali?</Hyperlink></TextBlock>
 
                 <Grid>
-                    <Button Content="LOGIN"  HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,15,5,0" Foreground="Black"  Grid.Column="2" 
-                            Command="{Binding Path=LoginCommand}" 
-                            CommandParameter="{Binding ElementName=LoginWindow}"/>
-                    <Button Content="SIGN UP"  HorizontalAlignment="Left"  Margin="5,15,0,0" Style="{StaticResource MyMaterialButton }"  Command="{Binding Path=SingUpCommand}"/>
+                    <Button
+                        Grid.Column="2"
+                        Margin="0,15,5,0"
+                        HorizontalAlignment="Right"
+                        Command="{Binding Path=LoginCommand}"
+                        CommandParameter="{Binding ElementName=LoginWindow}"
+                        Content="LOGIN"
+                        Foreground="Black"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+                    <Button
+                        Margin="5,15,0,0"
+                        HorizontalAlignment="Left"
+                        Command="{Binding Path=SingUpCommand}"
+                        Content="SIGN UP"
+                        Style="{StaticResource MyMaterialButton}" />
                 </Grid>
             </StackPanel>
         </Border>

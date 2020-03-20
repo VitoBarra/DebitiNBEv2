@@ -32,16 +32,14 @@ namespace AppDebitiV2.Views.UC
         }
 
 
+
+        public static readonly DependencyProperty IDProperty =
+            DependencyProperty.Register("ID", typeof(string), typeof(UserBox), new PropertyMetadata("Plahol"));
         public string ID
         {
             get { return (string)GetValue(IDProperty); }
             set { SetValue(IDProperty, value); }
         }
-
-        public static readonly DependencyProperty IDProperty =
-            DependencyProperty.Register("ID", typeof(string), typeof(UserBox), new PropertyMetadata("Plahol"));
-
-
 
         #endregion
 

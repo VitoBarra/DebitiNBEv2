@@ -20,6 +20,30 @@ namespace AppDebitiV2.Views.UC
     /// </summary>
     public partial class Movment : UserControl
     {
+
+        #region DependecyProperty
+
+        public static readonly DependencyProperty CreditProperty =
+            DependencyProperty.Register("Credit", typeof(string), typeof(Movment), new PropertyMetadata("0"));
+        public string Credit
+        {
+            get { return (string)GetValue(CreditProperty); }
+            set { SetValue(CreditProperty, value); }
+        }
+
+
+
+        public static readonly DependencyProperty UsernameProperty =
+            DependencyProperty.Register("Username", typeof(string), typeof(Movment), new PropertyMetadata("PlaceHolder"));
+        public string Username
+        {
+            get { return (string)GetValue(UsernameProperty); }
+            set { SetValue(UsernameProperty, value); }
+        }
+
+        #endregion
+
+
         public Movment()
         {
             InitializeComponent();

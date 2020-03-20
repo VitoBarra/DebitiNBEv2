@@ -135,8 +135,13 @@
                     Style="{StaticResource MyBorder}">
                     <ScrollViewer Margin="10,10,10,10">
                         <StackPanel>
-                            <UC:Movment />
-
+                            <ListBox ItemsSource="{Binding Path=LoggedUserdata.CompletedRequest}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <UC:Movment Credit="{Binding Path=Credito}" Username="{Binding Path=Username_Interaction}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>

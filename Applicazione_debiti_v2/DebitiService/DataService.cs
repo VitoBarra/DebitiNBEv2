@@ -31,13 +31,18 @@ namespace debitiNBEService
 
     public class RequestData
     {
-        public enum State {active, accepted, dennied }
+        public enum State { waiting , accepted, dennied, completed  }
 
         [JsonProperty("ID_mandante")]
         public int ID_mandante { get; set; }
 
+
         [JsonProperty("ID_ricevente")]
         public int ID_ricevente { get; set; }
+
+        [JsonProperty("Username_Interaction")]
+        public string Username_Interaction { get; set; }
+
 
         [JsonProperty("Credito")]
         public double Credito { get; set; }

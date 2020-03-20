@@ -42,10 +42,17 @@ namespace AppDebitiV2
 
 
 
-        private IList<RequestData> _Request;
-        public IList<RequestData> Request { get => _Request; set { _Request = new ObservableCollection<RequestData>(value); Notify(); } }
+        private IList<RequestData> _WaitingRequest;
+        public IList<RequestData> WaitingRequest { get => _WaitingRequest; set { _WaitingRequest = new ObservableCollection<RequestData>(value); Notify(); } }
 
+        private IList<RequestData> _AcceptedRequest;
+        public IList<RequestData> AcceptedRequest { get => _AcceptedRequest; set { _AcceptedRequest = new ObservableCollection<RequestData>(value); Notify(); } }
 
+        private IList<RequestData> _DenniedRequest;
+        public IList<RequestData> DenniedRequest { get => _DenniedRequest; set { _DenniedRequest = new ObservableCollection<RequestData>(value); Notify(); } }
+
+        private IList<RequestData> _CompletedRequest;
+        public IList<RequestData> CompletedRequest { get => _CompletedRequest; set { _CompletedRequest = new ObservableCollection<RequestData>(value); Notify(); } }
 
 
     }
@@ -53,17 +60,24 @@ namespace AppDebitiV2
 
     public class RequestData
     {
+        public enum State { waiting, accepted, dennied, completed }
+
         [JsonProperty("ID_mandante")]
-        int ID_mandante { get; set; }
+        public int ID_mandante { get; set; }
+
 
         [JsonProperty("ID_ricevente")]
-        int ID_ricevente { get; set; }
+        public int ID_ricevente { get; set; }
+
+        [JsonProperty("Username_Interaction")]
+        public string Username_Interaction { get; set; }
+
 
         [JsonProperty("Credito")]
-        float Credito { get; set; }
+        public double Credito { get; set; }
 
         [JsonProperty("Stato")]
-        int Stato { get; set; }
+        public State Stato { get; set; }
     }
 
 }

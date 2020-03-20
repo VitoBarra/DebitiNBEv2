@@ -27,16 +27,16 @@ namespace AppDebitiV2.Views
         ViewModelMain vm;
 
 
-        public MainWindowView(ViewModelMain _vm )
+        public MainWindowView(ViewModelMain _vm)
         {
             InitializeComponent();
             vm = _vm;
             this.DataContext = vm;
             LoginView loginView= new LoginView(new ViewModelLogin());
+
             if(loginView.ShowDialog() != true)
             {
-                vm.LoggedUserdata = JsonConvert.DeserializeObject<UserDataViewModels>((loginView.DataContext as ViewModelLogin).UserDataStr);
-                vm.LoggedUserdata.Request = JsonConvert.DeserializeObject<RequestData[]>(HttpEmulator.GetReqeust( vm.LoggedUserdata.ID));
+                vm.LoginUser((loginView.DataContext as ViewModelLogin).UserDataStr);
             }
         }
 
