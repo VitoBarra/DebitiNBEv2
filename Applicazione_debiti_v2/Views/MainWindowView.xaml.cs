@@ -24,7 +24,7 @@ namespace AppDebitiV2.Views
     /// </summary>
     public partial class MainWindowView : Window
     {
-        ViewModelMain vm;
+       public static ViewModelMain vm;
 
 
         public MainWindowView(ViewModelMain _vm)
@@ -73,7 +73,7 @@ namespace AppDebitiV2.Views
 
         private void ListViewItem_AddFriend(object sender, MouseButtonEventArgs e)
         {
-            AddFriend request = new AddFriend();
+            AddFriend request = new AddFriend(new ViewModelAddFriend());
             request.ShowDialog();
         }
 

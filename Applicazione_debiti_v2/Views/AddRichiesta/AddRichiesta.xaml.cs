@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using AppDebitiV2.Views.Add_Richiesta.page;
 
 namespace AppDebitiV2.Views
 {
@@ -23,12 +22,6 @@ namespace AppDebitiV2.Views
         public AddRichiesta()
         {
             InitializeComponent();
-            PageControler.Content = new SelezioneUtente(); 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PageControler.Content = new TipoRichiesta();
         }
     }
 }

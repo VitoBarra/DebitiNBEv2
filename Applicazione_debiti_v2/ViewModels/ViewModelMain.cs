@@ -100,7 +100,7 @@ namespace AppDebitiV2.ViewModels
 
         private void ListViewItem_AddFriend(object sender, MouseButtonEventArgs e)
         {
-            AddFriend request = new AddFriend();
+            AddFriend request = new AddFriend(new ViewModelAddFriend());
             request.ShowDialog();
         }
 

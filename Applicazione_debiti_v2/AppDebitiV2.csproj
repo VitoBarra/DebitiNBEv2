@@ -139,8 +139,11 @@
     <Compile Include="DebitiService\MySqlTool.cs" />
     <Compile Include="ViewModels\Structure\ConverterTool.cs" />
     <Compile Include="ViewModels\Structure\RelayCommand.cs" />
+    <Compile Include="ViewModels\ViewModelAddFriend.cs" />
     <Compile Include="ViewModels\ViewModelLogin.cs" />
     <Compile Include="ViewModels\ViewModelMain.cs" />
+    <Compile Include="ViewModels\ViewModelRichieste.cs" />
+    <Compile Include="ViewModels\ViewModeRequest.cs" />
     <Compile Include="Views\AddFriend.xaml.cs">
       <DependentUpon>AddFriend.xaml</DependentUpon>
     </Compile>
@@ -149,12 +152,6 @@
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AddRichiesta\Page\SelezioneUtente.xaml.cs">
-      <DependentUpon>SelezioneUtente.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AddRichiesta\Page\TipoRichiesta.xaml.cs">
-      <DependentUpon>TipoRichiesta.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Structure\BaseViewModel.cs" />
     <Page Include="Views\AddFriend.xaml">
@@ -202,14 +199,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UC\UserBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AddRichiesta\Page\SelezioneUtente.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AddRichiesta\Page\TipoRichiesta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

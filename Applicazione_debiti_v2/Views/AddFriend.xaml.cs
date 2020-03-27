@@ -19,9 +19,10 @@ namespace AppDebitiV2.Views
     /// </summary>
     public partial class AddFriend : Window
     {
-        public AddFriend()
+        public AddFriend( ViewModels.ViewModelAddFriend vm)
         {
             InitializeComponent();
+            DataContext = vm;
         }
     }
 }

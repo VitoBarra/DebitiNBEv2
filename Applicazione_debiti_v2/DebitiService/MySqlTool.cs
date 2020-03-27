@@ -98,7 +98,8 @@ namespace MyTool.MySql
 
             ~MySqlReaderTool()
             {
-                Dispose();
+                if (reader != null)
+                    Dispose();
             }
         }
 
