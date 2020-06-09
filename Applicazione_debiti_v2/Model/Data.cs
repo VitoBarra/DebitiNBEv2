@@ -20,7 +20,7 @@ namespace AppDebitiV2
     }
 
     public class UserDataViewModels : BaseViewModel
-    {
+    { 
 
         UserData userData = new UserData();
 

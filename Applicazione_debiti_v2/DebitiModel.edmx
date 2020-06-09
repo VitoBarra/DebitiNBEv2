@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="debitiModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="friendlist">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="user_ID1" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="user_ID1" Type="int" Nullable="false" />
+          <Property Name="Stato" Type="enum" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paymentrequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Request_ID" Type="int" Nullable="false" />
+          <Property Name="Credito" Type="float" Nullable="false" />
+          <Property Name="Stato" Type="enum" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_mandante" Type="int" Nullable="false" />
+          <Property Name="ID_ricevente" Type="int" Nullable="false" />
+          <Property Name="Credito" Type="float" Nullable="false" />
+          <Property Name="Stato" Type="enum" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Lastname" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_PaymentRequest_Request1">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="paymentrequest" Type="Self.paymentrequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="paymentrequest">
+              <PropertyRef Name="Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Request_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ID_mandante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Request_user2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ID_ricevente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_user_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="friendlist" Type="Self.friendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="friendlist">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_user_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="friendlist" Type="Self.friendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="friendlist">
+              <PropertyRef Name="user_ID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="debitiModelStoreContainer">
+          <EntitySet Name="friendlist" EntityType="Self.friendlist" Schema="debiti" store:Type="Tables" />
+          <EntitySet Name="paymentrequest" EntityType="Self.paymentrequest" Schema="debiti" store:Type="Tables" />
+          <EntitySet Name="request" EntityType="Self.request" Schema="debiti" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="debiti" store:Type="Tables" />
+          <AssociationSet Name="fk_PaymentRequest_Request1" Association="Self.fk_PaymentRequest_Request1">
+            <End Role="request" EntitySet="request" />
+            <End Role="paymentrequest" EntitySet="paymentrequest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Request_user1" Association="Self.fk_Request_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Request_user2" Association="Self.fk_Request_user2">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_user_user" Association="Self.fk_user_has_user_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="friendlist" EntitySet="friendlist" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_user_user1" Association="Self.fk_user_has_user_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="friendlist" EntitySet="friendlist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="debitiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="friendlist">
+          <Key>
+            <PropertyRef Name="user_ID" />
+            <PropertyRef Name="user_ID1" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="user_ID1" Type="Int32" Nullable="false" />
+          <Property Name="Stato" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.fk_user_has_user_user" FromRole="friendlist" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.fk_user_has_user_user1" FromRole="friendlist" ToRole="user" />
+        </EntityType>
+        <EntityType Name="paymentrequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Request_ID" Type="Int32" Nullable="false" />
+          <Property Name="Credito" Type="Single" Nullable="false" />
+          <Property Name="Stato" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="request" Relationship="Self.fk_PaymentRequest_Request1" FromRole="paymentrequest" ToRole="request" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_mandante" Type="Int32" Nullable="false" />
+          <Property Name="ID_ricevente" Type="Int32" Nullable="false" />
+          <Property Name="Credito" Type="Single" Nullable="false" />
+          <Property Name="Stato" Type="String" MaxLength="65532" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="paymentrequest" Relationship="Self.fk_PaymentRequest_Request1" FromRole="request" ToRole="paymentrequest" />
+          <NavigationProperty Name="user" Relationship="Self.fk_Request_user1" FromRole="request" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.fk_Request_user2" FromRole="request" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="friendlist" Relationship="Self.fk_user_has_user_user" FromRole="user" ToRole="friendlist" />
+          <NavigationProperty Name="friendlist1" Relationship="Self.fk_user_has_user_user1" FromRole="user" ToRole="friendlist" />
+          <NavigationProperty Name="request" Relationship="Self.fk_Request_user1" FromRole="user" ToRole="request" />
+          <NavigationProperty Name="request1" Relationship="Self.fk_Request_user2" FromRole="user" ToRole="request" />
+        </EntityType>
+        <Association Name="fk_user_has_user_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="friendlist" Type="Self.friendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="friendlist">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_has_user_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="friendlist" Type="Self.friendlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="friendlist">
+              <PropertyRef Name="user_ID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PaymentRequest_Request1">
+          <End Role="request" Type="Self.request" Multiplicity="1" />
+          <End Role="paymentrequest" Type="Self.paymentrequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="request">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="paymentrequest">
+              <PropertyRef Name="Request_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Request_user1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ID_mandante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Request_user2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ID_ricevente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="debitiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="friendlist" EntityType="Self.friendlist" />
+          <EntitySet Name="paymentrequest" EntityType="Self.paymentrequest" />
+          <EntitySet Name="request" EntityType="Self.request" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="fk_user_has_user_user" Association="Self.fk_user_has_user_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="friendlist" EntitySet="friendlist" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_has_user_user1" Association="Self.fk_user_has_user_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="friendlist" EntitySet="friendlist" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PaymentRequest_Request1" Association="Self.fk_PaymentRequest_Request1">
+            <End Role="request" EntitySet="request" />
+            <End Role="paymentrequest" EntitySet="paymentrequest" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Request_user1" Association="Self.fk_Request_user1">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Request_user2" Association="Self.fk_Request_user2">
+            <End Role="user" EntitySet="user" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="debitiModelStoreContainer" CdmEntityContainer="debitiEntities">
+          <EntitySetMapping Name="friendlist">
+            <EntityTypeMapping TypeName="debitiModel.friendlist">
+              <MappingFragment StoreEntitySet="friendlist">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="user_ID1" ColumnName="user_ID1" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymentrequest">
+            <EntityTypeMapping TypeName="debitiModel.paymentrequest">
+              <MappingFragment StoreEntitySet="paymentrequest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request">
+            <EntityTypeMapping TypeName="debitiModel.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_mandante" ColumnName="ID_mandante" />
+                <ScalarProperty Name="ID_ricevente" ColumnName="ID_ricevente" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+                <ScalarProperty Name="Stato" ColumnName="Stato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="debitiModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

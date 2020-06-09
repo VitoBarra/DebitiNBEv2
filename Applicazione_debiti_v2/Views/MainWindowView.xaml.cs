@@ -92,7 +92,7 @@ namespace AppDebitiV2.Views
 
         private void ListViewItem_Paga(object sender, MouseButtonEventArgs e)
         {
-            Paga paga = new Paga();
+            DebitInfo paga = new DebitInfo();
             paga.ShowDialog();
         }
     }

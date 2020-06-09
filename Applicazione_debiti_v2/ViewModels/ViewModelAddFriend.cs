@@ -29,9 +29,9 @@ namespace AppDebitiV2.ViewModels
                     case nameof(TextValue):
                         {
                             string str = TextValue;
-                            if (!string.IsNullOrEmpty(str)  && Regex.IsMatch(str, "[^0-9.]"))
+                            if (!string.IsNullOrEmpty(str)  && Regex.IsMatch(str, "[^0-9]"))
                                 {
-                                    TextValue = Regex.Replace(str, "[^0-9.]", "");
+                                    TextValue = Regex.Replace(str, "[^0-9]", "");
                                     ErrorMessage = "l ID non puo contenere lettere";
                                 }
                             return ErrorMessage;

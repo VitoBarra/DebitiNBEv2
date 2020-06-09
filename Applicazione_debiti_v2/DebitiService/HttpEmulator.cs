@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using MyTool.MySql;
 using MySqlReaderTool = MyTool.MySql.MySqlTool.MySqlReaderTool;
@@ -53,7 +53,7 @@ namespace debitiNBEService
         public static void DatabaseConnection() => MySqlTool.StrConnection = Databaseinfo.CONNECTION_STR;
 
 
-
+        
         public static void DebugFunction()
         {
 
@@ -104,7 +104,7 @@ namespace debitiNBEService
                 else
                     return JsonConvert.SerializeObject(1);
             }
-            catch (MySqlException e)
+            catch
             {
                 return JsonConvert.SerializeObject(2);
             }

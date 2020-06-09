@@ -72,7 +72,7 @@
 
         <StackPanel Height="400" Orientation="Horizontal">
 
-            <Grid Width="450" HorizontalAlignment="Left">
+            <Grid Width="450" >
                 <Border
                     Margin="15"
                     Background="White"
@@ -95,31 +95,7 @@
 
                 </Border>
             </Grid>
-
-
-            <Grid Width="450" HorizontalAlignment="Right">
-                <Border
-                    Margin="15"
-                    Background="White"
-                    Style="{StaticResource MyBorder}">
-
-                    <ScrollViewer>
-                        <StackPanel>
-                            <Label
-                                Margin="0,0,0,10"
-                                HorizontalAlignment="Center"
-                                Content="Amici"
-                                FontSize="30"
-                                FontWeight="Bold" />
-
-                            <UC:Request Width="400" Margin="5,0" />
-                            <UC:Request Width="400" Margin="5,0" />
-
-                        </StackPanel>
-                    </ScrollViewer>
-
-                </Border>
-            </Grid>
+       
         </StackPanel>
 
 

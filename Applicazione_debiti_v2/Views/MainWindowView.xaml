@@ -219,7 +219,7 @@
                         <md:PackIcon
                             Width="45"
                             Height="45"
-                            Kind="Plus" />
+                            Kind="AccountStar" />
                         <TextBlock
                             Margin="10"
                             VerticalAlignment="Center"
@@ -252,23 +252,6 @@
                             Text="fai una richiesta" />
                     </StackPanel>
                 </ListViewItem>
-
-
-
-                <ListViewItem PreviewMouseLeftButtonUp="ListViewItem_Paga">
-                    <StackPanel Orientation="Horizontal">
-                        <md:PackIcon
-                            Width="45"
-                            Height="45"
-                            Kind="Payment" />
-                        <TextBlock
-                            Margin="10"
-                            VerticalAlignment="Center"
-                            Text="paga" />
-                    </StackPanel>
-                </ListViewItem>
-
-
 
             </ListView>
 
