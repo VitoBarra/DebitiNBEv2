@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using AppDebitiV2.Models;
 using AppDebitiV2.Views;
 using debitiNBEService;
 
@@ -20,10 +21,11 @@ namespace AppDebitiV2
             base.OnStartup(e);
 
             HttpEmulator.DatabaseConnection();
+
             MainWindow = new MainWindowView(new ViewModels.ViewModelMain());
 
 
-
+        
             if (Global.loggedState)
                 MainWindow.Show();
             else

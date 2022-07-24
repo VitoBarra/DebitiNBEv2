@@ -1,4 +1,5 @@
-﻿using AppDebitiV2.Views;
+﻿using AppDebitiV2.Models;
+using AppDebitiV2.Views;
 using debitiNBEService;
 using Newtonsoft.Json;
 using System;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using RequestData = AppDebitiV2.Models.RequestData;
 
 namespace AppDebitiV2.ViewModels
 {
@@ -23,7 +25,7 @@ namespace AppDebitiV2.ViewModels
             get => _LoggedUserdata;
             set
             {
-                _LoggedUserdata = (UserDataViewModels)value;
+                _LoggedUserdata = value;
                 Notify();
             }
         }
