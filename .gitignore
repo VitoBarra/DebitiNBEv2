@@ -7,3 +7,5 @@
 /.vs
 /Applicazione_debiti_v2/bin/Debug
 /Applicazione_debiti_v2/obj
+/DebitiNBE API/bin/Debug/netcoreapp3.1
+/DebitiNBE API/obj
